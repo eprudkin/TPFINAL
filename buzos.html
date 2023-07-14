@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buzos</title>
+    <link rel="stylesheet" href="CSS/Style.css">
+    <link rel="shortcut icon" href="imagenes/ropero.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/a78a2d79be.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+            <Header class="header">
+            <div class="Logo">
+                <img src="imagenes/ropero.jpg" width="90" height="90" >
+                <h2 class="nombre_fundacion"> EL VESTIDOR</h2>
+            </div>
+
+            <nav>
+                <a href="Index.html" class="nav_link">Inicio</a>
+                <a href="Otoño Invierno.html" class="nav_link"> Otoño/Invierno</a>
+                <a href="Primavera Verano.html" class="nav_link">Primavera/ Verano</a>
+                <a href="producto_nuevo.html"class="nav_link"> Cargar Ropa</a>
+            </nav>  
+    </Header>
+
+<main>
+        <div id="app" class="container">
+            <br>
+            <h1>Productos</h1>
+
+            <a class="btn btn-primary" href="producto_nuevo.html">Nuevo</a>
+
+            <section v-if="error">Lo sentimos se produjo un error</section>
+            <section v-else>
+                <section v-if="cargando">
+                    <div class="spinner-border"></div>
+                    <p>Cargando .....</p>
+
+                </section>
+                <section v-else>
+
+                    <div class="table-responsive">
+                        <div id="app">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Talle</th>                                                                      <th scope="col">Imagen</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="producto in productos" class="">
+                                    <td scope="row">{{producto.id}}</td>
+                                    <td>{{producto.tipo}}</td>
+                                    <td>{{producto.talle}}</td>
+                                     <td> <img width="60" :src="producto.imagen" :alt="producto.tipo"></td>                               
+                                       
+                                    <td>
+                                        <button type="button" class="btn btn-danger" v-on:click="eliminar(producto.id)">Eliminar</button>
+
+                                        <a class="btn btn-primary"
+                                            :href="'producto_editar.html?id='+ producto.id+'&tipo=' +producto.tipo+ '&talle='+producto.talle+'&imagen='+producto.imagen">Editar</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+        
+
+        </main>
+
+       
+            <footer class="footer">
+
+                <div class="grupo1">
+
+                    <div class="redes">
+                        <h5>Seguinos en nuestras redes sociales:</h5>
+
+                        <div class="redes1">
+                            <a href="http://www.twitter.com"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="http://www.facebook.com"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="http://www.instagram.com"><i class="fa-brands fa-instagram"></i></a>
+
+                        </div>
+                    </div>
+
+                    <div class="devs">
+                        <h5> Desarrollado por:</h5>
+                        <p> Andreina Angulo</p>
+                        <p>Araceli De Los Santos</p>
+                        <p>Ekaterina Prudkin</p>
+                    </div>
+
+                  
+                </div>
+            </footer>
+            <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
+            <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+            <script src="./js/buzos.js"></script>
+            <!-- add . -->
+            
+            
+            
+         
+</body>
+
+</html>
